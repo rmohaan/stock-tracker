@@ -1,4 +1,5 @@
 @import 'bootstrap';
+@import "font-awesome";
 
 .form-group {
     background: white;
@@ -7,4 +8,8 @@
     max-width: 450px;
     align-self: center;
     justify-self: center;
+}
+
+.notification {
+    margin-left: 20rem !important;
 }

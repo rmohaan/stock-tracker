@@ -28,6 +28,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap', '~> 4.6.2'
 gem 'jquery-rails'
 
+gem 'font-awesome-rails'
+
 gem 'devise'
 gem 'devise-bootstrap-views', '~> 1.0'
 

@@ -1,0 +1,34 @@
+<div class="container row bg-white shadow rounded">
+  <div class="col-12 text-center"> 
+    <h1 class="text-center my-3"> Welcome to Stock Tracker </h1>
+    
+    <%= form_tag search_stock_path, class: "row justify-content-center align-items-center", remote: true, method: :get do  %>
+      <div class="mt-5">
+        <h3>  Search Stocks </h3>
+      </div>
+      <div class="w-100"></div>
+      <div class="form-group row ml-5" >
+        <div class="col-9 justify-content-center pr-0"> 
+          <%=  text_field_tag :stock, params[:stock], placeholder: "Search stock symbol", autofocus: true, class: "form-control form-control-lg" %>
+        </div>
+        <div class="col-3 pl-0">
+          <%= button_tag type: :submit, class: "btn btn-primary" do %>
+            <%= fa_icon 'search 2x' %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="results" class="row col-12">
+
+  </div>
+
+  <div class="col-12 text-center my-3"> 
+    <div class="w-100"> <hr /></div>
+    <div class="btn btn-dark text-white">
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,10 @@
+  <div class="col-6 notification">
+    <%= render 'shared/notifications' %>
+  </div>
+  <% if @stock %>
+    <div class="col-12 card card-header">
+      <div> <strong> Company: </strong> <%= @stock.name %> </div>
+      <div> <strong> Symbol: </strong> <%= @stock.symbol %> </div>
+      <div> <strong> Price: </strong>  $<%= @stock.price %> </div>
+    </div>
+  <% end %>
