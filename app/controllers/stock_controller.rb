@@ -22,4 +22,9 @@ class StockController < ApplicationController
     end
   end
 
+  def add
+    debugger
+    puts params
+  end
+
 end

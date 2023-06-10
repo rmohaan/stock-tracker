@@ -2,9 +2,14 @@
     <%= render 'shared/notifications' %>
   </div>
   <% if @stock %>
-    <div class="col-12 card card-header">
-      <div> <strong> Company: </strong> <%= @stock.name %> </div>
-      <div> <strong> Symbol: </strong> <%= @stock.symbol %> </div>
-      <div> <strong> Price: </strong>  $<%= @stock.price %> </div>
+    <div class="row col-12 card card-header justify-content-center align-items-center ml-3">
+      <div class="col-8">
+        <div> <strong> Company: </strong> <%= @stock.name %> </div>
+        <div> <strong> Symbol: </strong> <%= @stock.symbol %> </div>
+        <div> <strong> Price: </strong>  $<%= @stock.price %> </div>
+      </div>
+      <div class="col-4 text-right">
+        <%= button_to "Watch this stock", my_stocks_path, form_class: "btn btn-success", form: {stock: @stock}, method: :post, action: "add"  %>
+      </div>
     </div>
   <% end %>
