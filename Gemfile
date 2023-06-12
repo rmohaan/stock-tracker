@@ -35,6 +35,8 @@ gem 'devise-bootstrap-views', '~> 1.0'
 
 gem 'iex-ruby-client'
 
+gem 'hirb'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

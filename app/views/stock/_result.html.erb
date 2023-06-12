@@ -9,7 +9,17 @@
         <div> <strong> Price: </strong>  $<%= @stock.price %> </div>
       </div>
       <div class="col-4 text-right">
-        <%= button_to "Watch this stock", my_stocks_path, form_class: "btn btn-success", form: {stock: @stock}, method: :post, action: "add"  %>
+        <% if current_user.can_allow_tracking?(@stock.symbol) %>
+            <%= link_to "Watch this stock", user_stocks_path(user: current_user, stock: @stock.symbol), class: "btn btn-success", method: :post  %>
+        <% else %>
+          <span class="badge badge-success m-2 p-2"> You are already tracking
+          <% if current_user.is_user_tracking_this_stock?(@stock.symbol) %>
+            this stock
+          <% end %>
+          <% if !current_user.is_stock_under_limit? %>
+            10 stocks
+          <% end %>
+        <% end %>
       </div>
     </div>
   <% end %>

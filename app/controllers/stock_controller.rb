@@ -1,9 +1,8 @@
 class StockController < ApplicationController
-  before_action :authenticate_user!
   
   def search
     if params[:stock].present?
-      @stock = Stock.get_price(params[:stock])
+      @stock = Stock.stock_symbol_lookup(params[:stock])
       if @stock
         respond_to do |format|
           format.js { render partial: 'stock/result' }

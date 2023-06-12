@@ -6,4 +6,24 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def is_stock_under_limit?
+    stocks.count < 10
+  end
+
+  def is_user_tracking_this_stock?(symbol)
+    stock = Stock.find_stock(symbol)
+    return false unless stock
+    stocks.where(id: stock.id).exists?
+  end
+
+  def can_allow_tracking?(symbol)
+    is_stock_under_limit? && !is_user_tracking_this_stock?(symbol)
+  end
+
+  def full_name
+   return "#{first_name} #{last_name}" if first_name || last_name
+   "Anonymous"
+  end
+
 end

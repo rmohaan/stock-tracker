@@ -8,6 +8,7 @@
               <th scope="col">Company Name</th>
               <th scope="col">Stock Symbol</th>
               <th scope="col">Current Price</th>
+              <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -16,6 +17,9 @@
                 <td><%= stock.name %></td>
                 <td><%= stock.symbol %></td>
                 <td><%= stock.price %></td>
+                <td> 
+                  <%= link_to "Unwatch", user_stock_path(stock), data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-warning", method: :delete %>
+                </td>
               </tr>
             <% end %>
           </tbody>

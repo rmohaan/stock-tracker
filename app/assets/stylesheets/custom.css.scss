@@ -5,11 +5,16 @@
     background: white;
     border: 5px;
     box-shadow: 10px;
-    max-width: 450px;
+    // max-width: 450px;
     align-self: center;
     justify-self: center;
 }
 
 .notification {
     margin-left: 20rem !important;
+}
+
+.table {
+    overflow: scroll;
+    max-height: fit-content;
 }

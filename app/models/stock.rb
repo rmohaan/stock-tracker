@@ -4,7 +4,7 @@ class Stock < ApplicationRecord
 
   validates :name, :symbol, presence: true
 
-  def self.get_price(symbol) 
+  def self.stock_symbol_lookup(symbol) 
     client = IEX::Api::Client.new(
                 publishable_token: Rails.application.credentials.iex[:publishable_key],
                 secret_token: Rails.application.credentials.iex[:secret_key],
@@ -18,5 +18,9 @@ class Stock < ApplicationRecord
     rescue =>  exception
       return nil
     end
+  end
+
+  def self.find_stock(symbol)
+    find_by(symbol: symbol)
   end
 end
