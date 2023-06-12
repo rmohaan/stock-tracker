@@ -11,6 +11,12 @@
           <li class="nav-item <%= "active" if request.path == my_stocks_path %>">
             <%= link_to "My stocks", my_stocks_path, class: "nav-link" %>
           </li>
+          <li class="nav-item <%= "active" if request.path == my_friends_path %>">
+            <%= link_to "My friends", my_friends_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item <%= "active" if request.path == search_friends_path %>">
+            <%= link_to "Search friends", search_friends_path, class: "nav-link" %>
+          </li>
         </ul>
 
         <div class="navbar-nav">

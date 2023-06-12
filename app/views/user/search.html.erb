@@ -1,0 +1,34 @@
+<% if user_signed_in? %>
+  <div class=" row col-12 mt-3 ml-2">
+    <h4> Your friends </h4>
+    <% if @users.count > 0 %>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Full Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.full_name %></td>
+              <td><%= user.email %></td>
+              <td> 
+                <% if current_user.is_friend?(user) %>
+                  <%= link_to "Remove Friend", remove_friend_path(user.id), data: {confirm: "Are you sure?"}, class: "btn btn-sm btn-warning", method: :delete %>
+                <% else %>
+                  <%= link_to "Add Friend", add_friend_path(user: user.id), class: "btn btn-sm btn-success", method: :post %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="w-100"></div>
+      <p> You don't have any friends at this moment </p>
+    <% end %>
+  </div>
+<% end%>
