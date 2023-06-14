@@ -6,8 +6,6 @@ class UserController < ApplicationController
   def create
     friend_id = params[:user]
     user = current_user
-
-    debugger
     friend = Friendship.new(user_id: user.id, friend_id: friend_id)
     if friend.save
       flash[:notice] = "Added friend"
@@ -30,4 +28,22 @@ class UserController < ApplicationController
   def search
     @users = User.all
   end
+
+  def search_advanced
+    user = params[:user]
+    wildcard = "%#{user}%"
+    @users = User.where("first_name LIKE ? OR last_name LIKE ? OR email LIKE ?", wildcard, wildcard, wildcard)
+    @users = current_user.exclude(@users)
+    
+    respond_to do |format|
+      format.js { render partial: 'user/result' }
+    end 
+  end
+
+  def profile
+    id = params[:user]
+    @user = User.find(id)
+    @stocks = @user.stocks
+  end
+  
 end

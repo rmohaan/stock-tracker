@@ -21,6 +21,7 @@
                 <% else %>
                   <%= link_to "Add Friend", add_friend_path(user: user.id), class: "btn btn-sm btn-success", method: :post %>
                 <% end %>
+                <%= link_to "View profile", view_profile_path(user: user.id), class: "btn btn-sm btn-info" %>
               </td>
             </tr>
           <% end %>

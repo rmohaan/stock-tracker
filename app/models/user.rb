@@ -32,4 +32,8 @@ class User < ApplicationRecord
     friends.include? user
   end
 
+  def exclude(users)
+    users.reject { |user| user.id == self.id}
+  end
+
 end
